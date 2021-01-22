@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>multi-sig wallet</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./web3.min.js"></script>
+    <script type="text/javascript" src="./abi.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+
+      <div class="container">
+        <h1 class="display-4 text-success">multi-sig wallet</h1>
+        <hr />
+        <strong>account: </strong><span id="account_address"></span>
+        <br />
+        <strong>balance: </strong><span id="account_balance"></span>
+        <hr />
+        <div class="alert alert-danger" role="alert" id="alert_message">
+          <strong id="alert_message_text"></strong>
+        </div>
+        <hr />
+
+        <div class="row g-3">
+          <div class="col-3">
+            <strong class="text-secondary">current wallet balance: </strong>
+          </div>
+          <div class="col-2">
+            <span id="wallet_balance">0 ETH</span>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-3">
+            <strong class="text-secondary">open transfers: </strong>
+          </div>
+          <div class="col-2">
+            <span id="wallet_transfer_open_balance">0 ETH</span>
+          </div>
+          <div class="col-2">
+            <span id="wallet_transfer_open_count">0</span>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-3">
+            <strong class="text-secondary">approved transfers: </strong>
+          </div>
+          <div class="col-2">
+            <span id="wallet_transfer_approved_balance">0 ETH</span>
+          </div>
+          <div class="col-2">
+            <span id="wallet_transfer_approved_count">0</span>
+          </div>
+        </div>
+        <hr />
+      </div>
+
+
+    <div class="container">
+        <form class="row g-3">
+          <div class="col-2">
+            <span class=""><strong>deposit: </strong></span>
+          </div>
+          <div class="col-auto">
+            <input type="text" class="form-control" id="amount_deposit" placeholder="ETH">
+          </div>
+          <div class="col-auto">
+              <button type="button" id="wallet_deposit" class="btn btn-info btn-block"> deposit </button>
+          </div>
+        </form>
+        <hr />
+        <form class="row g-3">
+          <div class="col-2">
+            <span class=""><strong>withdraw: </strong></span>
+          </div>
+          <div class="col-auto">
+            <input type="text" class="form-control" id="amount_withdraw" placeholder="ETH">
+          </div>
+          <div class="col-auto">
+              <button type="button" id="wallet_withdraw" class="btn btn-success btn-block"> withdraw </button>
+          </div>
+        </form>
+      <hr />
+    </div>
+
+
+    <div class="container" id="admin_area">
+      <hr />
+      <strong>contract balance: </strong><span id="contract_balance"></span>
+      <hr />
+      <button type="button" id="all_transfers" class="btn btn-warning"> show all transfers </button>
+      <hr />
+      <div>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col">action</td>
+                      <th scope="col">id</td>
+                      <th scope="col">address</td>
+                      <th scope="col">amount</td>
+                      <th scope="col">approved</td>
+                      <th scope="col">sent</td>
+                  </tr>
+              </thead>
+              <tbody id="transfer_table">
+              </tbody>
+          </table>
+      </div>
+      <hr />
+      <button type="button" id="drain" class="btn btn-danger"> withdraw contract balance </button>
+      <hr />
+    </div>
+
+  </div>
+
+  </body>
+</html>
